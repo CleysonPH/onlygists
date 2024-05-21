@@ -4,6 +4,33 @@ import WidgetGroup from '@/modules/reports/components/Widget/Group/Group.vue'
 import WidgetLoader from '@/modules/reports/components/Widget/Group/Loader.vue'
 import WidgetCondensed from '@/modules/reports/components/Widget/Condensed/Condensed.vue'
 import GistCardGroup from '@/modules/gists/components/Card/Group/Group.vue'
+import GistCardItem from '@/modules/gists/components/Card/Item/Item.vue'
+
+const gists = [
+  {
+    id: '123',
+    title: 'useCurrentUser.ts',
+    description: 'Hook para pegar o **usuário atual** no Vue.js',
+    price: 10,
+    lang: 'typescript',
+  },
+  {
+    id: '456',
+    title: 'mq_client.py',
+    description:
+      'Cliente para conectar no RabbitMQ que consegue realizar `publish` e `subscribe`',
+    price: 20,
+    lang: 'python',
+  },
+  {
+    id: '789',
+    title: 'SecurityConfig.java',
+    description:
+      'Configuração para o **Spring Security** que permite autenticação via `JWT`',
+    price: 25,
+    lang: 'java',
+  },
+]
 </script>
 
 <template>
@@ -24,6 +51,16 @@ import GistCardGroup from '@/modules/gists/components/Card/Group/Group.vue'
   </WidgetGroup>
 
   <WidgetDefault title="Todos os gists">
-    <GistCardGroup>gists</GistCardGroup>
+    <GistCardGroup>
+      <GistCardItem
+        v-for="gist in gists"
+        :key="gist.id"
+        :id="gist.id"
+        :title="gist.title"
+        :description="gist.description"
+        :price="gist.price"
+        :lang="gist.lang"
+      />
+    </GistCardGroup>
   </WidgetDefault>
 </template>
