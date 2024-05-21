@@ -3,6 +3,7 @@ import PublicHeadline from '@/modules/users/components/PublicHeadline/PublicHead
 import WidgetGroup from '@/modules/reports/components/Widget/Group/Group.vue'
 import WidgetLoader from '@/modules/reports/components/Widget/Group/Loader.vue'
 import WidgetCondensed from '@/modules/reports/components/Widget/Condensed/Condensed.vue'
+import GistCardGroup from '@/modules/gists/components/Card/Group/Group.vue'
 </script>
 
 <template>
@@ -15,12 +16,14 @@ import WidgetCondensed from '@/modules/reports/components/Widget/Condensed/Conde
   />
 
   <WidgetGroup>
-    <WidgetLoader :loading="true" :amount="3">
+    <WidgetLoader :loading="false" :amount="3">
       <WidgetCondensed :value="10" label="Gists no total" />
       <WidgetCondensed :value="3" label="Gists gratuitos" />
       <WidgetCondensed :value="7" label="Gists pagos" />
     </WidgetLoader>
   </WidgetGroup>
 
-  <WidgetDefault title="Todos os gists"> Gists </WidgetDefault>
+  <WidgetDefault title="Todos os gists">
+    <GistCardGroup>gists</GistCardGroup>
+  </WidgetDefault>
 </template>
