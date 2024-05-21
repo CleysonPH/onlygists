@@ -6,7 +6,11 @@
       <div
         class="mx-auto flex max-w-screen-xl items-center justify-center md:justify-between"
       >
-        <div class="flex items-center">Logo</div>
+        <div class="flex items-center">
+          <NuxtLink to="/">
+            <Logo />
+          </NuxtLink>
+        </div>
 
         <div class="hidden items-center md:flex">
           <Button
