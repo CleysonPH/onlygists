@@ -12,7 +12,7 @@ const handleLogin = () => {
 <template>
   <MainContent>
     <template #header>
-      <Header @wants-be-creator="handleLogin" />
+      <Header @wants-be-creator="handleLogin"></Header>
     </template>
 
     <template #content>
