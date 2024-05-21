@@ -4,13 +4,22 @@ import WidgetGroup from '@/modules/reports/components/Widget/Group/Group.vue'
 import WidgetLoader from '@/modules/reports/components/Widget/Group/Loader.vue'
 import WidgetCondensed from '@/modules/reports/components/Widget/Condensed/Condensed.vue'
 import GistCardGroup from '@/modules/gists/components/Card/Group/Group.vue'
+import GistCardGroupLoader from '@/modules/gists/components/Card/Group/Loader.vue'
 import GistCardItem from '@/modules/gists/components/Card/Item/Item.vue'
+
+const route = useRoute()
+const router = useRouter()
+
+const handleNavigateToDetail = (id: string) => {
+  const { username } = route.params
+  router.push(`/${username}/gists/${id}`)
+}
 
 const gists = [
   {
     id: '123',
     title: 'useCurrentUser.ts',
-    description: 'Hook para pegar o **usuário atual** no Vue.js',
+    description: 'Hook para pegar o **usuário atual** no `Vue.js`',
     price: 10,
     lang: 'typescript',
   },
@@ -18,7 +27,7 @@ const gists = [
     id: '456',
     title: 'mq_client.py',
     description:
-      'Cliente para conectar no RabbitMQ que consegue realizar `publish` e `subscribe`',
+      'Cliente para conectar no *RabbitMQ* que consegue realizar `publish` e `subscribe`',
     price: 20,
     lang: 'python',
   },
@@ -52,15 +61,18 @@ const gists = [
 
   <WidgetDefault title="Todos os gists">
     <GistCardGroup>
-      <GistCardItem
-        v-for="gist in gists"
-        :key="gist.id"
-        :id="gist.id"
-        :title="gist.title"
-        :description="gist.description"
-        :price="gist.price"
-        :lang="gist.lang"
-      />
+      <GistCardGroupLoader :loading="false">
+        <GistCardItem
+          v-for="gist in gists"
+          :key="gist.id"
+          :id="gist.id"
+          :title="gist.title"
+          :description="gist.description"
+          :price="gist.price"
+          :lang="gist.lang"
+          @tap="handleNavigateToDetail"
+        />
+      </GistCardGroupLoader>
     </GistCardGroup>
   </WidgetDefault>
 </template>
